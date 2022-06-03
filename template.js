@@ -4,7 +4,7 @@ main();
 function main(){
     var sifre1=String(prompt("Şifre giriniz"));
     var sifre2=String(prompt("Doğrulamak için yeniden giriniz"));
-    passwordCheck(sifre1,sifre2);
+    passwordCheck(sifre1,sifre2,passwordNullCheck);
 }
 function passwordNullCheck(password1,password2){//şifre boş mu kontrolü
     if(password1 == 'null' || password1 == "" || password2 == 'null' || password2 == ""){
@@ -13,8 +13,8 @@ function passwordNullCheck(password1,password2){//şifre boş mu kontrolü
     }
     return true;
 }
-function passwordCheck(password1,password2){ //şifre eşleşme kontrolü
-    if(!passwordNullCheck(password1,password2)){return false;}
+function passwordCheck(password1,password2,callback){ //şifre eşleşme kontrolü
+    if(!callback(password1,password2)){return false;}
     if(password1==password2){
         document.write("Şifre doğru."+'<br>');
         document.write("Şifre: "+password1);
